@@ -1,10 +1,11 @@
-package web.config;
+package ru.javamentor.web.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class AppConfigInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+
+        return new Class[]{PersistenceConfig.class};
     }
 
     @Override

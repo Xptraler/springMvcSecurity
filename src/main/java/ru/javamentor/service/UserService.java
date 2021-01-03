@@ -1,6 +1,6 @@
-package service;
+package ru.javamentor.service;
 
-import model.User;
+import ru.javamentor.model.User;
 
 import java.util.List;
 

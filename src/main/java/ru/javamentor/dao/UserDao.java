@@ -1,6 +1,6 @@
-package dao;
+package ru.javamentor.dao;
 
-import model.User;
+import ru.javamentor.model.User;
 
 import java.util.List;
 

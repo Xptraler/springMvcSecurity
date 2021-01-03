@@ -1,7 +1,8 @@
-package service;
+package ru.javamentor.service;
 
-import dao.UserDao;
-import model.User;
+import ru.javamentor.dao.UserDao;
+import ru.javamentor.dao.UserDaoImpl;
+import ru.javamentor.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,11 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
-    private UserDao userDao;
+    private final UserDao userDao;
 
-    public UserServiceImpl() {
-
-    }
 
     @Autowired
     public UserServiceImpl(UserDao userDao) {

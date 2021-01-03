@@ -1,16 +1,18 @@
-package dao;
+package ru.javamentor.dao;
 
-import model.User;
+import ru.javamentor.model.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Repository
 public class UserDaoImpl implements UserDao {
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
+
 
     @Override
     public void createUser(User user) {
@@ -26,7 +28,9 @@ public class UserDaoImpl implements UserDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<User> getUsers() {
-        return (List<User>) entityManager.createQuery("select u FROM User u");
+
+        Query query = entityManager.createQuery("SELECT user FROM User user");
+        return (List<User>) query.getResultList();
     }
 
     @Override

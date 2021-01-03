@@ -6,12 +6,10 @@
     <title>New User</title>
 </head>
 <body>
-<form th:method="POST" th:action="@{/}" th:object="${user}">
-    <label for="name">Enter name: </label>
-    <input type = "text" th:field = "*{name}" id = "name"/>
+<form action="/" method="post" >
+    <input type = "text" name="name"/>
     <br>
-    <label for="surname">Enter surname: </label>
-    <input type = "text" th:field = "*{surname}" id="surname">
+    <input type = "text" name="surname"/>
     <br>
     <input type="submit" value="Create">
 </form>
