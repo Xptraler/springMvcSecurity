@@ -15,7 +15,7 @@ public class SpringConfig {
     @Bean
     public UserService userServiceBean()
     {
-        return new UserServiceImpl((UserDao) new UserDaoImpl());
+        return new UserServiceImpl(new UserDaoImpl());
     }
 
 

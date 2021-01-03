@@ -5,7 +5,7 @@ public class AppConfigInitializer extends AbstractAnnotationConfigDispatcherServ
     @Override
     protected Class<?>[] getRootConfigClasses() {
 
-        return new Class[]{PersistenceConfig.class};
+        return null;
     }
 
     @Override
