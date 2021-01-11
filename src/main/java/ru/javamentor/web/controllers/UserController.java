@@ -17,7 +17,7 @@ public class UserController {
     private final UserService userService;
 
     @Autowired
-    public UserController(@Qualifier("userServiceBean") UserService userService) {
+    public UserController (UserService userService) {
 
         this.userService = userService;
     }
@@ -38,7 +38,7 @@ public class UserController {
 
     @PostMapping()
     public String createUser(@RequestParam String name, @RequestParam String surname) {
-        User user = new User(name,surname);
+        User user =(User)new User(name,surname);
             userService.createUser(user);
         return "redirect:/";
 

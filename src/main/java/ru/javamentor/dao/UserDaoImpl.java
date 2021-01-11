@@ -17,8 +17,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void createUser(User user) {
-       Session session = entityManager.unwrap(Session.class);
-       session.persist(user);
+       entityManager.persist(user);
 
     }
 
@@ -31,9 +30,8 @@ public class UserDaoImpl implements UserDao {
     @SuppressWarnings("unchecked")
     public List<User> getUsers() {
 
-        Session session = entityManager.unwrap(Session.class);
-        Query query = session.createQuery("SELECT User from User ", User.class);
-        return (List<User>) query.getResultList();
+       return entityManager.createQuery("select User from User").getResultList();
+
     }
 
     @Override
