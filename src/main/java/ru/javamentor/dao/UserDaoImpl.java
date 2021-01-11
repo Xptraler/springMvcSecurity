@@ -1,5 +1,6 @@
 package ru.javamentor.dao;
 
+import org.hibernate.Session;
 import ru.javamentor.model.User;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +17,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void createUser(User user) {
-        entityManager.persist(user);
+       Session session = entityManager.unwrap(Session.class);
+       session.persist(user);
 
     }
 
@@ -29,7 +31,8 @@ public class UserDaoImpl implements UserDao {
     @SuppressWarnings("unchecked")
     public List<User> getUsers() {
 
-        Query query = entityManager.createQuery("SELECT user FROM User user");
+        Session session = entityManager.unwrap(Session.class);
+        Query query = session.createQuery("SELECT User from User ", User.class);
         return (List<User>) query.getResultList();
     }
 
