@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/jsp/jstl/core ">
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
@@ -12,16 +14,26 @@
         <th>id</th>
         <th>name</th>
         <th>surname</th>
+        <th>operations</th>
     </tr>
 
     <tr th:each="users : ${users}">
+        <c:url var="updateButton" value="/update">
+            <c:param name="userId" value="${users.id}"/>
+        </c:url>
         <td th:utext="${users.id}">id</td>
         <td th:utext="${users.name}">name</td>
         <td th:utext="${users.surname}">surname</td>
+        <td>
+            <input type="button" value="update"
+            onclick="window.location.href = '${updateButton}'"/>
+        </td>
 
 
     </tr>
-
 </table>
+<br>
+<input type="button" value="Add"
+       onclick="window.location.href = 'new.html'"/>
 </body>
 </html>

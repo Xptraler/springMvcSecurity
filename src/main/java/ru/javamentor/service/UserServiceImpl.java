@@ -1,5 +1,6 @@
 package ru.javamentor.service;
 
+import org.springframework.data.jpa.repository.Modifying;
 import ru.javamentor.dao.UserDao;
 import ru.javamentor.dao.UserDaoImpl;
 import ru.javamentor.model.User;
@@ -27,7 +28,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser() {
+    @Transactional
+    @Modifying
+    public void deleteUser(int id) {
+        userDao.deleteUser(id);
 
     }
 
@@ -39,7 +43,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void editUser() {
+    @Transactional
+    public User getUser(int id) {
+       return userDao.getUser(id);
 
+    }
+
+    @Override
+    @Transactional
+    @Modifying
+    public void update(int id, User user) {
+        userDao.update(id,user);
     }
 }
